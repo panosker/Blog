@@ -10,7 +10,7 @@ Environment Setup
 
 If virtualenv is not installed :
 
-  $ python -m venv <directory>
+  $ python -m venv venv
 
 Create a virtual environment
 
