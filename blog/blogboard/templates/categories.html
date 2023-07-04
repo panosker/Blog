@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}
+        Categories
+{% endblock %}
+
+{% block content %}
+
+{% if category_posts %}
+
+<h1>{{ cats }}</h1>
+
+<ul>
+{% for post in category_posts %}
+<li>{{ post.author.first_name}}
+    {{ post.author.last_name }} <br>
+    <a href="{% url 'post-detail' post.pk %}">{{ post.title}}</a> 
+    - {{ post.category }}
+    - <small> {{ post.date }} </small>
+    {% if user.is_authenticated %}
+  - <small><a href="{% url 'update_post' post.pk %}">Edit</a></small>
+  - <small><a href="{% url 'delete_post' post.pk %}">Delete</a></small>
+{% endif %} <br>
+{{ post.body|slice:":200"|safe }} 
+<br></li>
+
+
+{% endfor %}
+</ul>
+{% else %}
+  <h2> There is no such category</h2>
+{% endif %}
+{% endblock %}

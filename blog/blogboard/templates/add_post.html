@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}
+        Blog
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+        <h1>Create a new post</h1>
+        <br><br>
+        <div class = 'form-group'>
+                <form method="POST" enctype = "multipart/form-data">
+                {% csrf_token %}
+                {{ form.media}}
+                {{ form.as_p}}
+                <button class="btn btn-secondary">Post</button>
+
+                </form>
+        </div>
+        <!-- -->
+        <script>
+                var name = "{{ user.id }}";
+                document.getElementById("panos").value
+                        = name;
+                
+        </script>
+
+{% else %}
+        <h2> You must login in order to create a new post</h2>
+{% endif %}
+
+
+{% endblock %}

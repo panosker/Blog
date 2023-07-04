@@ -1,0 +1,88 @@
+.custom-navbar {
+    background-color: #666666;
+  }
+
+body {
+    background-color: black;
+    color: white; 
+  }
+
+a {
+  color: #ffffff;  
+  text-decoration: none; 
+   
+}
+
+a:hover {
+  color: #ff0000;  
+}
+  
+.nav-link{
+  color:black;
+}
+
+.card {
+  background-color: #333333;
+  color: white;
+}
+
+
+.card-header {
+  background-color: #666666;
+}
+
+
+
+.card-body {
+  background-color: #444444;
+}
+.card-body1 {
+  background-color: #666666;
+}
+
+.card-title a {
+  color: white;
+}
+
+.card-text {
+  color: lightgray;
+}
+
+.btn-primary {
+  background-color: #777777;
+  border-color: #777777;
+}
+
+.btn-danger {
+  background-color: #cc0000;
+  border-color: #cc0000;
+}
+
+.btn-primary:hover, .btn-danger:hover {
+  background-color: #999999;
+  border-color: #999999;
+}
+  
+
+.comments_div {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 200px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+}
+
+.hidden {
+  display: none;
+}

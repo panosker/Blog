@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Blog
+{% endblock %}
+
+{% block content %}
+  <h1>All Posts</h1>
+
+  {% for post in object_list %}
+    <div class="card text-center">
+      <div class="card text-center">
+        <div class="card-header">
+          <div class="d-flex justify-content-between">
+            <div>
+              {% if post.author.profile.profile_pic %}
+                <img src="{{ post.author.profile.profile_pic.url }}" class="img-fluid rounded-start" style="width: 100px;">
+              {% else %}
+                <img src="{% static 'blogboard/images/default_profile_pic.png' %}" class="img-fluid rounded-start" style="width: 100px;">
+              {% endif %}
+              {% if post.author.profile.id %}
+              <a href="{% url 'show_profile_page' post.author.profile.id %}">
+                  {{ post.author.first_name }}
+                  {{ post.author.last_name }}
+                </a>
+              {% endif %}
+            </div>
+            {% if user.is_authenticated %}
+              {% if user.id == post.author.id %}
+                <div class="d-flex flex-column">
+                  <a href="{% url 'update_post' post.pk %}" class="btn btn-sm btn-primary">Edit</a>
+                  <a href="{% url 'delete_post' post.pk %}" class="btn btn-sm btn-danger mt-2">Delete</a>
+                </div>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+        <div class="card-header">
+          <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item" >
+              <a class="nav-link active" aria-current="true" href="#" >Active</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'post-detail' post.pk %}">Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'show_profile_page' post.author.profile.id %}">Author</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a></h5>
+          <div class="card w-75 mb-3">
+            <div class="card-body1">
+              <p class="card-text">{{ post.body|slice:":200"|safe }}</p>
+            </div>
+          </div>
+          <br>
+          <a href="{%url 'post-detail' post.pk %}" class="btn btn-primary stretched-link">Continue reading</a>
+        </div>
+      </div>
+    <br>
+    <br>
+  {% endfor %}
+  
+{% endblock %}

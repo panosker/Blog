@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}
+        Update your post
+{% endblock %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+           {% if user.id == post.author.id %}
+                <h1>Update your post</h1> 
+                <br><br>
+                <div class="form-group">
+                <form method="POST">
+                        {% csrf_token %}
+                        {{ form.media}}
+                        {{ form.as_p}}
+                        <button class="btn btn-secondary">Update</button>
+
+                </form>
+                </div>
+          {% else %}
+                <h2> You don't have privileges for this action </h2>
+          {% endif %}     
+    {% else %}
+            <h2>You must login in order to update a post </h2>
+    {% endif %}
+{% endblock %}
